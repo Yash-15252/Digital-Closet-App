@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="jumbotron text-center bg-light p-5 rounded">
+    <h1 class="display-4">Welcome to Your Digital Closet</h1>
+    <p class="lead">Upload your clothes, generate outfits, and stay stylish!</p>
+    <a class="btn btn-primary btn-lg" href="{{ url_for('upload') }}">Start Uploading</a>
+    <a class="btn btn-success btn-lg ms-2" href="{{ url_for('generate_outfit') }}">Generate Random Outfit</a>
+</div>
+<div class="row mt-5">
+    <div class="col-md-4">
+        <h3>📸 Upload Clothes</h3>
+        <p>Add photos of your wardrobe items with category tags.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>🎲 Random Outfit</h3>
+        <p>Let AI pick a complete look from your closet.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>💾 Saved Outfits</h3>
+        <p>Save your favorite combinations for later.</p>
+    </div>
+</div>
+{% endblock %}
+

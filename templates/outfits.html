@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Saved Outfits{% endblock %}
+
+{% block content %}
+<h2>Saved Outfits</h2>
+{% for outfit in outfits %}
+<div class="card mb-3">
+    <div class="card-header">
+        Outfit #{{ outfit.id }} - {{ outfit.created_at.strftime('%Y-%m-%d %H:%M') }}
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-12">
+                <!-- Outfit JSON Data -->
+                <pre class="bg-light p-3 rounded">{{ outfit.outfit_data }}</pre>
+            </div>
+        </div>
+    </div>
+</div>
+{% else %}
+<p class="text-muted">No saved outfits yet. <a href="{{ url_for('generate_outfit') }}">Generate one!</a></p>
+{% endfor %}
+<a href="{{ url_for('index') }}" class="btn btn-primary">Back to Home</a>
+{% endblock %}
+

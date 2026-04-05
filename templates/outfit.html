@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Generated Outfit{% endblock %}
+
+{% block content %}
+<h2>Random Outfit Generated!</h2>
+<div class="row justify-content-center">
+    {% for cat, img_path in outfit.items() %}
+    <div class="col-md-2 text-center mb-4">
+        <h6>{{ cat }}</h6>
+        <img src="{{ img_path }}" class="img-fluid rounded shadow" style="max-height: 250px; width: 100%; object-fit: cover;">
+    </div>
+    {% endfor %}
+</div>
+<div class="text-center">
+    <button id="saveBtn" class="btn btn-success btn-lg" onclick="saveOutfit({{ outfit|tojson }})">Save This Outfit 💾</button>
+    <a href="{{ url_for('index') }}" class="btn btn-primary btn-lg ms-2">Generate Another</a>
+</div>
+{% endblock %}
+
