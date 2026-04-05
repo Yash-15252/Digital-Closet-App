@@ -12,48 +12,46 @@ A professional web application to manage your digital wardrobe. Upload photos of
 ## Tech Stack
 - Backend: Flask, SQLAlchemy (SQLite)
 - Frontend: HTML, CSS, JavaScript, Bootstrap 5
-- Image handling: Flask-Uploads, Pillow
+- Image handling: Manual secure upload
 
 ## Quick Start
 
 1. Clone the repo:
    ```
-   git clone https://github.com/yourusername/digital-closet-app.git
+   git clone https://github.com/Yash-15252/digital-closet-app.git
    cd digital-closet-app
    ```
 
 2. Create virtual environment and install dependencies:
    ```
    python -m venv venv
-   venv\\Scripts\\activate  # Windows
+   venv\Scripts\activate  # Windows
    pip install -r requirements.txt
    ```
 
 3. Run the app:
    ```
-   flask run
+   python app.py
    ```
 
-4. Open http://127.0.0.1:5000 in your browser.
+4. Open http://127.0.0.1:5000
 
 ## Usage
-- **Upload**: Go to /upload, select image, choose category, submit.
-- **Gallery**: View all items at /gallery.
-- **Random Outfit**: Click 'Generate Outfit' on home.
-- **Saved Outfits**: View at /outfits.
+- **Upload**: /upload
+- **Gallery**: /gallery
+- **Random Outfit**: Home button
+- **Saved Outfits**: /outfits
 
 ## Folder Structure
 ```
 digital-closet-app/
-├── app.py              # Main Flask app
-├── models.py           # DB models
-├── config.py           # Config
-├── requirements.txt    # Dependencies
-├── tests/              # Pytest tests
-├── static/             # CSS, JS, uploads/
-├── templates/          # HTML templates
-├── instance/
-│   └── app.db         # SQLite DB (auto-created)
+├── app.py
+├── models.py
+├── config.py
+├── requirements.txt
+├── tests/
+├── static/
+├── templates/
 ├── .gitignore
 └── README.md
 ```
@@ -63,9 +61,4 @@ digital-closet-app/
 pytest tests/
 ```
 
-## Deployment
-Suitable for Heroku, Vercel, or Railway. Set `FLASK_ENV=production`.
-
-## License
-MIT License - feel free to use and modify.
-
+MIT License.
