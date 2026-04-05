@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
-from flask_uploads import UploadSet, IMAGES, configure_uploads
 from flask_sqlalchemy import SQLAlchemy
 from models import db, Clothing, Outfit
 from config import Config
@@ -13,12 +12,6 @@ app.config.from_object(Config)
 
 db.init_app(app)
 
-# Uploads setup
-images = UploadSet('images', IMAGES)
-configure_uploads(app, images)
-
-
-
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -29,8 +22,13 @@ def upload():
         file = request.files.get('file')
         category = request.form.get('category')
         if file and category:
-            filename = images.save(file)
-            clothing = Clothing(image_path=images.url(filename), category=category)
+            filename = secure_filename(file.filename)
+            upload_dir = 'static/uploads'
+            os.makedirs(upload_dir, exist_ok=True)
+            file_path = os.path.join(upload_dir, filename)
+            file.save(file_path)
+            image_path = f'/{upload_dir}/{filename}'
+            clothing = Clothing(image_path=image_path, category=category)
             db.session.add(clothing)
             db.session.commit()
             flash('Clothing item uploaded successfully!')
@@ -76,5 +74,5 @@ def save_outfit():
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0')
 
